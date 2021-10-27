@@ -11,16 +11,16 @@ const events = []
 app.post("/events", async (req, res, next) => {
   const event = req.body;
   events.push(event)
-  const POST_URL = "http://localhost:8080/events"
+  const POST_URL = "http://posts-clusterip-srv:8080/events"
   const COMMENT_URL = "http://localhost:8090/events"
   const QUERY_URL = "http://localhost:8070/events"
   const MODERATION_URL = "http://localhost:8060/events"
 
   try {
     await axios.post(POST_URL, event)
-    await axios.post(COMMENT_URL, event)
-    await axios.post(QUERY_URL, event)
-    await axios.post(MODERATION_URL, event)
+    // await axios.post(COMMENT_URL, event)
+    // await axios.post(QUERY_URL, event)
+    // await axios.post(MODERATION_URL, event)
   } catch (error) {
     console.log(error);
   }
