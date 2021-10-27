@@ -20,7 +20,7 @@ app.post("/posts", async (req, res, next) => {
       title,
     };
 
-    await axios.post("http://localhost:5000/events", {
+    await axios.post("http://event-bus-srv:5000/events", {
       type: "PostCreated",
       data: { id, title },
     });
@@ -37,5 +37,6 @@ app.post("/events", async (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
+  console.log("v3");
   console.log("Post service  on port %s", PORT);
 });
